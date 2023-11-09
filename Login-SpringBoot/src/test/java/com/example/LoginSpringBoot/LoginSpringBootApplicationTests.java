@@ -1,10 +1,10 @@
-package com.Pro1.Project_Back;
+package com.example.LoginSpringBoot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ProjectBackApplicationTests {
+class LoginSpringBootApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -1,13 +1,13 @@
-package com.Pro1.Project_Back;
+package com.example.LoginSpringBoot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ProjectBackApplication {
+public class LoginSpringBootApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProjectBackApplication.class, args);
+		SpringApplication.run(LoginSpringBootApplication.class, args);
 	}
 
 }
