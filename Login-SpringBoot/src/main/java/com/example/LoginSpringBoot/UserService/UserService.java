@@ -1,8 +1,5 @@
 package com.example.LoginSpringBoot.UserService;
 
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+public class UserService {
 
-public interface UserService {
-    UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
 }

@@ -1,12 +1,15 @@
 package com.example.LoginSpringBoot.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.Set;
+
 
 @Entity
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -14,13 +17,25 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String username;
+    private int id;
+
+    @Column(nullable = false)
+    private String firstname;
+
+    @Column(nullable = false)
+    private String lastname;
+
+    @Column(unique=true)
+    private String email;
+
+    @Column(nullable = false)
     private String password;
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "USER_ROLES", joinColumns = {
-            @JoinColumn(name = "USER_ID") }, inverseJoinColumns = {
-            @JoinColumn(name = "ROLE_ID") })
-    private Set<Role> roles;
+
+    @Enumerated(EnumType.STRING)//Telling Spring that this is a Enum
+    private Role role;
+
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    private boolean enabled;
 
 }
