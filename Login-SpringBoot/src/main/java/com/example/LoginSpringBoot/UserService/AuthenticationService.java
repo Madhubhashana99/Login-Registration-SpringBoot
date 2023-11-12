@@ -1,10 +1,15 @@
 package com.example.LoginSpringBoot.UserService;
 
 
+import com.example.LoginSpringBoot.Configuration.AuthenticationRequest;
+import com.example.LoginSpringBoot.Configuration.AuthenticationResponse;
+import com.example.LoginSpringBoot.Configuration.RegisterRequest;
+import com.example.LoginSpringBoot.Model.Role;
 import com.example.LoginSpringBoot.Model.User;
 import com.example.LoginSpringBoot.Repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +30,7 @@ public class AuthenticationService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)
                 .build();
-        userRepo.save(user);
+        userRepository.save(user);
         var jwtToken=jwtService.generateToken(user);
         return AuthenticationResponse.builder()
                 .Token(jwtToken)
@@ -40,7 +45,7 @@ public class AuthenticationService {
                         request.getPassword()
                 )
         );
-        var user=userRepo.findByEmail(request.getEmail())
+        var user=userRepository.findByEmail(request.getEmail())
                 .orElseThrow();
         var jwtToken=jwtService.generateToken(user);
         return AuthenticationResponse.builder()

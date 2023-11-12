@@ -1,5 +1,8 @@
 package com.example.LoginSpringBoot.Controller;
 
+import com.example.LoginSpringBoot.Configuration.AuthenticationRequest;
+import com.example.LoginSpringBoot.Configuration.AuthenticationResponse;
+import com.example.LoginSpringBoot.Configuration.RegisterRequest;
 import com.example.LoginSpringBoot.UserService.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
