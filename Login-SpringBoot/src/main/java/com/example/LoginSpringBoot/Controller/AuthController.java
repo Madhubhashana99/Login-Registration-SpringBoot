@@ -24,7 +24,7 @@ public class AuthController {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    @PostMapping("/register")
+    @PostMapping("/register")//register the users
     public ResponseEntity<AuthenticationResponse>register(@RequestBody RegisterRequest request){
         return ResponseEntity.ok(authenticationService.register(request));
     }
